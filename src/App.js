@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 // import './App.css';
 import TodoInput from "./components/TodoInput";
@@ -14,23 +14,19 @@ function App() {
         setTimeout(() => setError(null), 3000);
     };
 
-    const fetchTodos = async () => {
-        try {
-            const response = await axios.get(API_URL);
-
-            setTodos(response.data);
-            console.log("todos fetch 석섹스: ", response.data);
-            setError(null); // 성공 시 에러 초기화
-        } catch (error) {
-            console.error("fetching error, 에러 났으요: ", error);
-            setError("서버 연결 오류로 인해 목록 확인이 되지 않아요!");
-            clearError();
-        }
-    };
+    const fetchTodos = useCallback(async () => { // ⭐️ useCallback으로 감싸기
+    try {
+        const response = await axios.get(API_URL);
+        setTodos(response.data);
+        clearError();
+    } catch (error) {
+        setError('서버 연결 오류로 인해 목록 확인이 되지 않아요!');
+    }
+}, [API_URL, clearError]);
 
     useEffect(() => {
         fetchTodos();
-    }, []);
+    }, [fetchTodos]);
 
     const deleteTodo = async (id) => {
         try {
