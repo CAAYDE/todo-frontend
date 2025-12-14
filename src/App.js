@@ -77,19 +77,24 @@ function App() {
     };
 
     return (
-        <div className="App">
-            <h1>간단 Todo List</h1>
-            {error && (
-                <div style={{ color: "red", border: "1px solid red", padding: "10px", marginBottom: "10px" }}>
-                    {error}
-                </div>
-            )}
-            <TodoInput fetchTodos={fetchTodos} setError={setError} clearError={clearError} />
-            <TodoList
-                todos={todos}
-                deleteTodo={deleteTodo}
-                toggleComplete={toggleComplete}
-            />
+        <div className='min-h-screen bg-gray-50 flex flex-col items-center p-4'>
+            <div className='w-full max-w-xl bg-white shadow-2xl rounded-xl p-6'>
+
+                    <h1 className='text-3xl font-bold text-gray-800 mb-6 text-center'>
+                        간단 Todo List
+                    </h1>
+                    {error && (
+                        <div className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4'>
+                            {error}
+                        </div>
+                    )}
+                    <TodoInput fetchTodos={fetchTodos} setError={setError} clearError={clearError} />
+                    <TodoList
+                        todos={todos}
+                        deleteTodo={deleteTodo}
+                        toggleComplete={toggleComplete}
+                    />
+            </div>
         </div>
     );
 }

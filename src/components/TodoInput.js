@@ -48,8 +48,14 @@ function TodoInput({ fetchTodos, setError, clearError }) {
                 placeholder="새로운 일 추가" 
                 value={inputValue}
                 onChange={handleChange}
+                className="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
-            <button type="submit">추가</button>
+            <button 
+                type="submit"
+                className='bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-indigo-700 transition duration-150'
+                >
+                    추가
+            </button>
         </form>
     );
 }
