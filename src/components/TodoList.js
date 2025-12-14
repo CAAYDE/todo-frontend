@@ -5,11 +5,15 @@ function TodoList({ todos, deleteTodo, toggleComplete }) {
 
     return (
         <div className="todo-list">
-            <h2>할 일 목록 ({todos.length}개)</h2>
+            <h2 className='text-xl font-semibold text-gray-700 mb-4 border-b pb-2'>
+                할 일 목록 ({todos.length}개)
+            </h2>
 
             {/* todos가 비어 있다면 */}
             {todos.length === 0 ? (
-                <p>그대들의 할 일을 추가하세요!</p>
+                <p className='text-center text-gray-500 py-4'>
+                    그대들의 할 일을 추가하세요!
+                </p>
             ) : (
                 <ul>
                     {todos.map(todo => (

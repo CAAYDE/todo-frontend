@@ -26,12 +26,12 @@ function TodoItem({ todo, deleteTodo, toggleComplete }) {
 
     return (
         // 아이템 컨테이너: 상태에 따라 배경색과 텍스트 스타일 변경
-        <div className={`flex justify-between items-center p-3 my-2 rounded-lg transition duration-300 
-            ${todo.is_completed ? 'bg-green-100 text-gray-500 line-through' : 'bg-gray-100 hover:bg-gray-200'}`
+        <div className={`flex justify-between items-center p-4 my-3 rounded-xl transition duration-300 border border-gray-200 shadow-md
+            ${todo.is_completed ? 'bg-green-50 text-gray-500 line-through' : 'bg-white hover:shadow-lg'}`
         }>
             
             {/* 제목과 토글 영역 */}
-            <div className='flex items-center gap-3'>
+            <div className='flex items-center gap-4'>
                 <input
                     type='checkbox'
                     checked={todo.is_completed}

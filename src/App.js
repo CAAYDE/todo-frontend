@@ -69,11 +69,11 @@ function App() {
     }, [API_URL, clearError]);
 
     return (
-        <div className='min-h-screen bg-gray-50 flex flex-col items-center p-4'>
-            <div className='w-full max-w-xl bg-white shadow-2xl rounded-xl p-6'>
+        <div className='min-h-screen bg-gray-100 flex items-center justify-center p-4'>
+            <div className='w-full max-w-xl bg-white shadow-2xl rounded-xl p-8'>
 
-                    <h1 className='text-3xl font-bold text-gray-800 mb-6 text-center'>
-                        간단 Todo List
+                    <h1 className='text-3xl font-extrabold text-gray-800 mb-6 text-center tracking-tight'>
+                        Todo List
                     </h1>
                     {error && (
                         <div className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4'>
