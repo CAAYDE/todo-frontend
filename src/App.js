@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-// import './App.css';
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
@@ -10,11 +9,11 @@ function App() {
 
     const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000/todos";
 
-    const clearError = () => {
-        setTimeout(() => setError(null), 3000);
-    };
+    const clearError = useCallback(() => {
+    setError(null);
+}, []);
 
-    const fetchTodos = useCallback(async () => { // ⭐️ useCallback으로 감싸기
+    const fetchTodos = useCallback(async () => {
     try {
         const response = await axios.get(API_URL);
         setTodos(response.data);
@@ -28,13 +27,11 @@ function App() {
         fetchTodos();
     }, [fetchTodos]);
 
-    const deleteTodo = async (id) => {
+    const deleteTodo = useCallback(async (id) => {
         try {
             // id를 url 경로에 포함하여 전송함
             await axios.delete(`${API_URL}/${id}`);
-
             console.log(`Todo ${id} 삭제 성공`);
-
             // filter로 id가 일치하지 않는 항목들만 남긴다.
             setTodos((currentTodos) => currentTodos.filter((todo) => todo.id !== id));
             setError(null); // 성공 시 에러 초기화
@@ -43,12 +40,11 @@ function App() {
             setError("서버 연결 오류로 인해 삭제가 되지 않아요!");
             clearError();
         }
-    };
+    }, [API_URL, clearError]);
 
     // 특정 항목의 완료 상태를 토글
-    const toggleComplete = async (id, currentTitle, currentStatus) => {
+    const toggleComplete = useCallback( async (id, currentTitle, currentStatus) => {
         const newStatus = !currentStatus;
-
         const updateData = {
             title: currentTitle,
             is_completed: newStatus,
@@ -70,7 +66,7 @@ function App() {
             setError("서버 연결 오류로 인해 변경이 되지 않아요!");
             clearError();
         }
-    };
+    }, [API_URL, clearError]);
 
     return (
         <div className='min-h-screen bg-gray-50 flex flex-col items-center p-4'>

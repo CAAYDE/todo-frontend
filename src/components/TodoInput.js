@@ -15,8 +15,7 @@ function TodoInput({ fetchTodos, setError, clearError }) {
         e.preventDefault();
 
         if (inputValue.trim() === '') {
-            setError('기능 고장!! 서버를 확인해주세요!');
-            clearError();
+            setError('할 일을 입력해주세요!');
             return;
         }
         
@@ -37,7 +36,6 @@ function TodoInput({ fetchTodos, setError, clearError }) {
         } catch (error) {
             console.error('Todo 생성 중 오류 발생: ', error);
             setError("서버 연결 오류 발생으로 추가되지 않았어요!");
-            clearError();
         }
     }
 
