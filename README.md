@@ -15,3 +15,6 @@ Vercel, Render 이용 -> 돈이 없으니까!!!!
 ### 추후 계획
  일단 이 투두리스트를 좀 이쁘게 꾸미고 마무리를 짓고 저와 제 친구들이 일상을 공유할 sns를 만들어보는게 이번 방학 계획입니다.
  ㅂㅂ
+
+#### 2025-12-16 update
+https://docs.google.com/document/d/1-_0KcXd_kGPsWnko-y8RQf3_RTSgQhy0i76WnKVXjJ4/edit?usp=sharing
